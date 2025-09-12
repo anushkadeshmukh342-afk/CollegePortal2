@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Company Visits - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-building me-2"></i>Visited Companies</h1>
+            <p class="lead">Information about companies that have visited our campus for placements and recruitment</p>
+        </div>
+    </div>
+
+    {% if companies %}
+    <div class="row">
+        {% for company in companies %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-building fa-lg"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="card-title mb-1">{{ company.name }}</h5>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>Visited: {{ company.visit_date.strftime('%B %d, %Y') }}
+                            </small>
+                        </div>
+                    </div>
+                    
+                    {% if company.job_roles %}
+                    <div class="mb-3">
+                        <h6 class="small fw-bold text-muted">JOB ROLES:</h6>
+                        <p class="small">{{ company.job_roles }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="row text-center">
+                        {% if company.package_offered %}
+                        <div class="col-6">
+                            <div class="border-end">
+                                <div class="h6 text-success mb-0">{{ company.package_offered }}</div>
+                                <small class="text-muted">Package Offered</small>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="col-6">
+                            <div class="h6 text-info mb-0">{{ company.students_placed }}</div>
+                            <small class="text-muted">Students Placed</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    {% set days_ago = (today - company.visit_date).days %}
+                    {% if days_ago == 0 %}
+                    <span class="badge bg-success">Today</span>
+                    {% elif days_ago < 30 %}
+                    <span class="badge bg-warning">{{ days_ago }} days ago</span>
+                    {% elif days_ago < 365 %}
+                    <span class="badge bg-info">{{ (days_ago // 30) }} months ago</span>
+                    {% else %}
+                    <span class="badge bg-secondary">{{ (days_ago // 365) }} years ago</span>
+                    {% endif %}
+                    
+                    {% if company.students_placed > 0 %}
+                    <span class="badge bg-success ms-2">Successful</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-building fa-4x text-muted mb-3"></i>
+                    <h3>No Company Visit Information</h3>
+                    <p class="text-muted">Information about company visits and placements will be displayed here once available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Placement Statistics -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Placement Overview</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center border-success">
+                <div class="card-body">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-chart-line fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Placement Record</h6>
+                    <h4 class="text-success">85%</h4>
+                    <p class="card-text small">Average placement rate</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center border-info">
+                <div class="card-body">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-rupee-sign fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Highest Package</h6>
+                    <h4 class="text-info">₹15 LPA</h4>
+                    <p class="card-text small">Best offer received</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center border-warning">
+                <div class="card-body">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-calculator fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Average Package</h6>
+                    <h4 class="text-warning">₹4.5 LPA</h4>
+                    <p class="card-text small">Mean salary package</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center border-primary">
+                <div class="card-body">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-building fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Companies Visited</h6>
+                    <h4 class="text-primary">120+</h4>
+                    <p class="card-text small">This academic year</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Recruiting Sectors -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-industry me-2"></i>Top Recruiting Sectors
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Information Technology:</h6>
+                            <ul>
+                                <li>Software Development</li>
+                                <li>Web Development</li>
+                                <li>Data Analytics</li>
+                                <li>Cybersecurity</li>
+                                <li>Cloud Computing</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Core Engineering:</h6>
+                            <ul>
+                                <li>Manufacturing</li>
+                                <li>Automotive</li>
+                                <li>Construction</li>
+                                <li>Power & Energy</li>
+                                <li>Telecommunications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placement Process -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-clipboard-list me-2"></i>Placement Process
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>For Students:</h6>
+                            <ol>
+                                <li>Register with placement cell</li>
+                                <li>Maintain minimum CGPA requirements</li>
+                                <li>Attend pre-placement talks</li>
+                                <li>Prepare resume and documents</li>
+                                <li>Participate in selection process</li>
+                                <li>Accept offer letter if selected</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Selection Rounds:</h6>
+                            <ul>
+                                <li><strong>Aptitude Test:</strong> Quantitative and logical reasoning</li>
+                                <li><strong>Technical Test:</strong> Subject-specific knowledge</li>
+                                <li><strong>Group Discussion:</strong> Communication and leadership</li>
+                                <li><strong>Technical Interview:</strong> In-depth technical assessment</li>
+                                <li><strong>HR Interview:</strong> Personality and cultural fit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Tip:</strong> Start preparation early and participate in mock interviews conducted by the placement cell.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

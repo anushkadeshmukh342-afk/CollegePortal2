@@ -1,0 +1,132 @@
+
+{% extends "base.html" %}
+
+{% block title %}Comments & Feedback - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-comments me-2"></i>Comments & Feedback</h1>
+            <p class="lead">Share your thoughts and feedback about our college services</p>
+        </div>
+    </div>
+
+    <!-- Add Comment Form -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-plus me-2"></i>Add Your Comment</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('add_comment') }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" required maxlength="100">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Your Comment *</label>
+                            <textarea class="form-control" id="content" name="content" rows="4" required minlength="10" maxlength="1000" placeholder="Share your feedback, suggestions, or questions..."></textarea>
+                            <div class="form-text">Minimum 10 characters, maximum 1000 characters.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Comment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Comments -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-4">Recent Comments</h3>
+            
+            {% if comments.items %}
+            {% for comment in comments.items %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h6 class="card-title mb-1">{{ comment.name }}</h6>
+                            <small class="text-muted">{{ comment.created_at | ist_time }}</small>
+                        </div>
+                    </div>
+                    <p class="card-text">{{ comment.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Pagination -->
+            <nav aria-label="Comments pagination">
+                <ul class="pagination justify-content-center">
+                    {% if comments.has_prev %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('comments', page=comments.prev_num) }}">Previous</a>
+                    </li>
+                    {% endif %}
+                    
+                    {% for page_num in comments.iter_pages() %}
+                        {% if page_num %}
+                            {% if page_num != comments.page %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('comments', page=page_num) }}">{{ page_num }}</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item active">
+                                <span class="page-link">{{ page_num }}</span>
+                            </li>
+                            {% endif %}
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if comments.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('comments', page=comments.next_num) }}">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% else %}
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-comment-slash fa-4x text-muted mb-3"></i>
+                    <h3>No Comments Yet</h3>
+                    <p class="text-muted">Be the first to share your feedback!</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Guidelines -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>Comment Guidelines
+                    </h5>
+                    <ul class="mb-0">
+                        <li>Be respectful and courteous in your comments</li>
+                        <li>Provide constructive feedback and suggestions</li>
+                        <li>Avoid inappropriate language or content</li>
+                        <li>Comments are moderated and may be hidden if inappropriate</li>
+                        <li>Your email will not be displayed publicly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

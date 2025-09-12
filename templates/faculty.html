@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Faculty Directory - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><i class="fas fa-users me-2"></i>Faculty Directory</h1>
+                <div class="d-flex gap-2">
+                    <select class="form-select" id="departmentFilter">
+                        <option value="">All Departments</option>
+                        {% for dept in departments %}
+                        <option value="{{ dept[0] }}">{{ dept[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <form class="d-flex" method="GET">
+                        <input class="form-control" type="search" placeholder="Search faculty..." name="search" value="{{ request.args.get('search', '') }}">
+                        <button class="btn btn-primary ms-2" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if faculty %}
+    <div class="row" id="facultyContainer">
+        {% for member in faculty %}
+        <div class="col-lg-4 col-md-6 mb-4 faculty-card" data-department="{{ member.department }}">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-user-tie fa-lg"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="card-title mb-1">{{ member.name }}</h5>
+                            <small class="text-muted">{{ member.designation or 'Faculty' }}</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <span class="badge bg-secondary">{{ member.department }}</span>
+                    </div>
+                    
+                    <div class="contact-info">
+                        {% if member.email %}
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:{{ member.email }}" class="text-decoration-none">{{ member.email }}</a>
+                        </div>
+                        {% endif %}
+                        
+                        {% if member.phone %}
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:{{ member.phone }}" class="text-decoration-none">{{ member.phone }}</a>
+                        </div>
+                        {% endif %}
+                        
+                        {% if member.cabin_number %}
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-door-open me-2 text-muted"></i>
+                            <span>Cabin {{ member.cabin_number }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex gap-2">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="btn btn-sm btn-primary flex-grow-1">
+                            <i class="fas fa-envelope me-1"></i>Email
+                        </a>
+                        {% endif %}
+                        {% if member.phone %}
+                        <a href="tel:{{ member.phone }}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-phone me-1"></i>Call
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-users fa-4x text-muted mb-3"></i>
+                    <h3>No Faculty Information Found</h3>
+                    <p class="text-muted">
+                        {% if request.args.get('search') %}
+                        No faculty members found matching your search criteria.
+                        {% else %}
+                        Faculty directory will be displayed here once available.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Department Overview -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Departments</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-laptop-code fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Computer Science</h6>
+                    <p class="card-text small">Software Engineering, AI, Machine Learning, Data Science</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-cogs fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Mechanical Engineering</h6>
+                    <p class="card-text small">Manufacturing, Thermal, Design, Automotive Engineering</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-bolt fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Electrical Engineering</h6>
+                    <p class="card-text small">Power Systems, Electronics, Control Systems</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-building fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Civil Engineering</h6>
+                    <p class="card-text small">Structural, Environmental, Transportation Engineering</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Guidelines -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>Faculty Contact Guidelines
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Office Hours:</h6>
+                            <ul>
+                                <li><strong>Monday to Friday:</strong> 9:00 AM - 5:00 PM</li>
+                                <li><strong>Saturday:</strong> 9:00 AM - 1:00 PM</li>
+                                <li><strong>Lunch Break:</strong> 1:00 PM - 2:00 PM</li>
+                                <li><strong>Emergency:</strong> Use provided contact numbers</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Communication Guidelines:</h6>
+                            <ul>
+                                <li>Email for non-urgent academic queries</li>
+                                <li>Visit cabin during office hours</li>
+                                <li>Schedule appointments for detailed discussions</li>
+                                <li>Use official email for formal communications</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Tip:</strong> Always mention your name, roll number, and subject when contacting faculty members.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const departmentFilter = document.getElementById('departmentFilter');
+    const facultyCards = document.querySelectorAll('.faculty-card');
+    
+    function filterFaculty() {
+        const departmentValue = departmentFilter.value;
+        
+        facultyCards.forEach(card => {
+            const department = card.dataset.department;
+            const departmentMatch = !departmentValue || department === departmentValue;
+            
+            card.style.display = departmentMatch ? 'block' : 'none';
+        });
+    }
+    
+    departmentFilter.addEventListener('change', filterFaculty);
+});
+</script>
+{% endblock %}

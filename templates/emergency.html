@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block title %}Emergency Contacts - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-phone-alt me-2"></i>Emergency Contacts</h1>
+            <p class="lead">Quick access to important contact information during emergencies</p>
+        </div>
+    </div>
+
+    <!-- Emergency Services -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="mb-3">Emergency Services</h2>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card border-danger">
+                <div class="card-body text-center">
+                    <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-ambulance fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Medical Emergency</h5>
+                    <h3 class="text-danger">108</h3>
+                    <p class="card-text">24/7 Ambulance Service</p>
+                    <a href="tel:108" class="btn btn-danger">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card border-warning">
+                <div class="card-body text-center">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-fire-extinguisher fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Fire Emergency</h5>
+                    <h3 class="text-warning">101</h3>
+                    <p class="card-text">Fire Department</p>
+                    <a href="tel:101" class="btn btn-warning">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card border-primary">
+                <div class="card-body text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-shield-alt fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Police</h5>
+                    <h3 class="text-primary">100</h3>
+                    <p class="card-text">Police Control Room</p>
+                    <a href="tel:100" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- College Contacts -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="mb-3">College Emergency Contacts</h2>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-user-tie me-2"></i>Principal
+                    </h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Office:</strong></p>
+                            <p class="text-primary">+91-721-XXXXXXX</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Mobile:</strong></p>
+                            <p class="text-primary">+91-9XXX-XXXXXX</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="tel:+91721XXXXXXX" class="btn btn-sm btn-primary">
+                            <i class="fas fa-phone me-1"></i>Office
+                        </a>
+                        <a href="tel:+919XXXXXXXX" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-mobile me-1"></i>Mobile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-user-md me-2"></i>College Medical Officer
+                    </h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Clinic:</strong></p>
+                            <p class="text-success">+91-721-YYYYYYY</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Mobile:</strong></p>
+                            <p class="text-success">+91-9YYY-YYYYYY</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="tel:+91721YYYYYYY" class="btn btn-sm btn-success">
+                            <i class="fas fa-phone me-1"></i>Clinic
+                        </a>
+                        <a href="tel:+919YYYYYYYY" class="btn btn-sm btn-outline-success">
+                            <i class="fas fa-mobile me-1"></i>Mobile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-shield-alt me-2"></i>Security Office
+                    </h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Main Gate:</strong></p>
+                            <p class="text-info">+91-721-ZZZZZZZ</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Control Room:</strong></p>
+                            <p class="text-info">+91-9ZZZ-ZZZZZZ</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="tel:+91721ZZZZZZZ" class="btn btn-sm btn-info">
+                            <i class="fas fa-phone me-1"></i>Gate
+                        </a>
+                        <a href="tel:+919ZZZZZZZZ" class="btn btn-sm btn-outline-info">
+                            <i class="fas fa-mobile me-1"></i>Control
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-tools me-2"></i>Maintenance
+                    </h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Office:</strong></p>
+                            <p class="text-secondary">+91-721-AAAAAAA</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-1"><strong>Emergency:</strong></p>
+                            <p class="text-secondary">+91-9AAA-AAAAAA</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="tel:+91721AAAAAAA" class="btn btn-sm btn-secondary">
+                            <i class="fas fa-phone me-1"></i>Office
+                        </a>
+                        <a href="tel:+919AAAAAAAA" class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-mobile me-1"></i>Emergency
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nearby Hospitals -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="mb-3">Nearby Hospitals</h2>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-hospital me-2"></i>Government Medical College
+                    </h6>
+                    <p class="card-text small">
+                        <i class="fas fa-map-marker-alt me-1"></i>3.2 km from college<br>
+                        <i class="fas fa-phone me-1"></i>+91-721-XXXXXXX
+                    </p>
+                    <a href="tel:+91721XXXXXXX" class="btn btn-sm btn-outline-primary">Call</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-hospital me-2"></i>Alexis Hospital
+                    </h6>
+                    <p class="card-text small">
+                        <i class="fas fa-map-marker-alt me-1"></i>2.8 km from college<br>
+                        <i class="fas fa-phone me-1"></i>+91-721-YYYYYYY
+                    </p>
+                    <a href="tel:+91721YYYYYYY" class="btn btn-sm btn-outline-primary">Call</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-hospital me-2"></i>Shri Krishna Hospital
+                    </h6>
+                    <p class="card-text small">
+                        <i class="fas fa-map-marker-alt me-1"></i>4.1 km from college<br>
+                        <i class="fas fa-phone me-1"></i>+91-721-ZZZZZZZ
+                    </p>
+                    <a href="tel:+91721ZZZZZZZ" class="btn btn-sm btn-outline-primary">Call</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Guidelines -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Emergency Guidelines
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Medical Emergency:</h6>
+                            <ol>
+                                <li>Call 108 immediately</li>
+                                <li>Inform college medical officer</li>
+                                <li>Contact student's family</li>
+                                <li>Provide first aid if trained</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Fire Emergency:</h6>
+                            <ol>
+                                <li>Call 101 fire department</li>
+                                <li>Evacuate the area</li>
+                                <li>Alert security office</li>
+                                <li>Use nearest fire extinguisher if safe</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger mt-3 mb-0">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        <strong>Remember:</strong> In any emergency, prioritize safety first. Call for professional help immediately.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

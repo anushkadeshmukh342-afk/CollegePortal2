@@ -1,0 +1,118 @@
+
+{% extends "base.html" %}
+
+{% block title %}Innovation Hub - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-lightbulb me-2"></i>Innovation Hub</h1>
+            <p class="lead">Fostering creativity, innovation, and entrepreneurship</p>
+        </div>
+    </div>
+
+    <!-- Innovation Areas -->
+    <div class="row mb-5">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-primary">
+                <div class="card-body text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-robot fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">AI & Machine Learning</h5>
+                    <p class="card-text">Research and development in artificial intelligence, machine learning, and data science projects.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-success">
+                <div class="card-body text-center">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-mobile-alt fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">App Development</h5>
+                    <p class="card-text">Mobile and web application development using latest technologies and frameworks.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-info">
+                <div class="card-body text-center">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-microchip fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">IoT & Electronics</h5>
+                    <p class="card-text">Internet of Things projects, embedded systems, and electronic device prototyping.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Projects -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Current Projects</h2>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Smart Campus System</h5>
+                    <p class="card-text">QR-based information system for campus navigation and services access.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">In Progress</span>
+                        <small class="text-muted">Team: 5 students</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Student Performance Analytics</h5>
+                    <p class="card-text">AI-powered system to analyze and predict student academic performance.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-success">Completed</span>
+                        <small class="text-muted">Team: 4 students</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-tools me-2"></i>Available Resources
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Equipment & Tools:</h6>
+                            <ul>
+                                <li>3D Printers and Design Software</li>
+                                <li>Arduino and Raspberry Pi Kits</li>
+                                <li>Development Workstations</li>
+                                <li>Electronics Lab Equipment</li>
+                                <li>Cloud Computing Resources</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Support Services:</h6>
+                            <ul>
+                                <li>Mentorship from Faculty</li>
+                                <li>Industry Expert Sessions</li>
+                                <li>Funding for Promising Projects</li>
+                                <li>Patent Application Assistance</li>
+                                <li>Startup Incubation Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

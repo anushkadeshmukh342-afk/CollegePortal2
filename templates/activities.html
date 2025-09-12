@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Activities - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-calendar-check me-2"></i>College Activities</h1>
+            <p class="lead">Upcoming college events, fests, and activities</p>
+        </div>
+    </div>
+
+    {% if events %}
+    <div class="row">
+        {% for event in events %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="card-title mb-1">{{ event.title }}</h5>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>{{ event.date.strftime('%B %d, %Y') }}
+                                {% if event.time %}
+                                <i class="fas fa-clock ms-2 me-1"></i>{{ event.time }}
+                                {% endif %}
+                            </small>
+                        </div>
+                    </div>
+                    
+                    {% if event.description %}
+                    <p class="card-text">{{ event.description }}</p>
+                    {% endif %}
+                    
+                    <div class="row text-sm">
+                        {% if event.venue %}
+                        <div class="col-12 mb-2">
+                            <i class="fas fa-map-marker-alt me-2 text-muted"></i>
+                            <span>{{ event.venue }}</span>
+                        </div>
+                        {% endif %}
+                        {% if event.organizer %}
+                        <div class="col-12">
+                            <i class="fas fa-user-tie me-2 text-muted"></i>
+                            <span>{{ event.organizer }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex justify-content-between align-items-center">
+                        {% set days_left = (event.date - today).days %}
+                        {% if days_left == 0 %}
+                        <span class="badge bg-success">Today</span>
+                        {% elif days_left == 1 %}
+                        <span class="badge bg-warning">Tomorrow</span>
+                        {% elif days_left > 0 %}
+                        <span class="badge bg-info">{{ days_left }} days left</span>
+                        {% else %}
+                        <span class="badge bg-secondary">Past Event</span>
+                        {% endif %}
+                        
+                        <button class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-info-circle me-1"></i>Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
+                    <h3>No Upcoming Activities</h3>
+                    <p class="text-muted">College activities and events will be displayed here once scheduled.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Activity Categories -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Activity Categories</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-trophy fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Sports & Games</h6>
+                    <p class="card-text small">Inter-college competitions, sports day, and recreational activities</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-theater-masks fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Cultural Events</h6>
+                    <p class="card-text small">Annual fest, cultural programs, dance and music competitions</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-microchip fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Technical Events</h6>
+                    <p class="card-text small">Coding competitions, project exhibitions, technical seminars</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-handshake fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Social Activities</h6>
+                    <p class="card-text small">Community service, social awareness programs, volunteer activities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Participation Guidelines -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-clipboard-list me-2"></i>Participation Guidelines
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>How to Participate:</h6>
+                            <ol>
+                                <li>Check event announcements regularly</li>
+                                <li>Register through the respective club/department</li>
+                                <li>Submit required documents before deadline</li>
+                                <li>Attend briefing sessions if required</li>
+                                <li>Follow event rules and guidelines</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Benefits of Participation:</h6>
+                            <ul>
+                                <li>Develop leadership and teamwork skills</li>
+                                <li>Build confidence and public speaking abilities</li>
+                                <li>Network with students from other colleges</li>
+                                <li>Win prizes and certificates</li>
+                                <li>Add activities to your resume</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Note:</strong> Active participation in college activities is encouraged and may contribute to overall academic assessment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

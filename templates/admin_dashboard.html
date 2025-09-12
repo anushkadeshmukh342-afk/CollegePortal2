@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>
+                    <i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard
+                </h1>
+                <a href="/admin/logout" class="btn btn-outline-danger">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Statistics -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-comments fa-3x text-primary mb-3"></i>
+                    <h3 class="card-title">{{ stats.total }}</h3>
+                    <p class="card-text">Total Comments</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-eye fa-3x text-success mb-3"></i>
+                    <h3 class="card-title">{{ stats.visible }}</h3>
+                    <p class="card-text">Visible Comments</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-eye-slash fa-3x text-warning mb-3"></i>
+                    <h3 class="card-title">{{ stats.hidden }}</h3>
+                    <p class="card-text">Hidden Comments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comments Management -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-4">
+                <i class="fas fa-cog me-2"></i>Manage Comments
+            </h3>
+
+            {% if comments %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Comment</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for comment in comments %}
+                            <tr class="{% if not comment.is_visible %}table-warning{% endif %}">
+                                <td>{{ comment.name }}</td>
+                                <td>{{ comment.email }}</td>
+                                <td>
+                                    <div style="max-width: 300px; max-height: 60px; overflow: hidden; text-overflow: ellipsis;">
+                                        {{ comment.content[:100] }}{% if comment.content|length > 100 %}...{% endif %}
+                                    </div>
+                                </td>
+                                <td>
+                                    <small>{{ comment.created_at | ist_time }}</small>
+                                </td>
+                                <td>
+                                    {% if comment.is_visible %}
+                                        <span class="badge bg-success">Visible</span>
+                                    {% else %}
+                                        <span class="badge bg-warning">Hidden</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="/admin/toggle_comment/{{ comment.id }}" 
+                                           class="btn btn-{% if comment.is_visible %}warning{% else %}success{% endif %}"
+                                           onclick="return confirm('Are you sure you want to {% if comment.is_visible %}hide{% else %}show{% endif %} this comment?')">
+                                            <i class="fas fa-{% if comment.is_visible %}eye-slash{% else %}eye{% endif %}"></i>
+                                            {% if comment.is_visible %}Hide{% else %}Show{% endif %}
+                                        </a>
+                                        <a href="/admin/delete_comment/{{ comment.id }}" 
+                                           class="btn btn-danger"
+                                           onclick="return confirm('Are you sure you want to permanently delete this comment?')">
+                                            <i class="fas fa-trash"></i>
+                                            Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="card">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-comment-slash fa-4x text-muted mb-3"></i>
+                        <h4>No Comments Yet</h4>
+                        <p class="text-muted">Comments will appear here for moderation when users submit them.</p>
+                        <a href="/comments" class="btn btn-primary">
+                            <i class="fas fa-comments me-2"></i>View Comments Page
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Admin Guidelines -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-shield-alt me-2"></i>Admin Guidelines
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="mb-0">
+                                <li>Review comments regularly for inappropriate content</li>
+                                <li>Hide comments that violate community guidelines</li>
+                                <li>Delete spam or malicious comments permanently</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="mb-0">
+                                <li>Maintain a balance between moderation and openness</li>
+                                <li>Consider user feedback for website improvements</li>
+                                <li>Keep personal information of commenters confidential</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

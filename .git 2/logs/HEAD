@@ -1,0 +1,15 @@
+0000000000000000000000000000000000000000 250a944427eb41a3a2496e38a8b6c80ff5d4c2fe Anushka <anushka@Mac.lan> 1756309306 +0530	commit (initial): Initial commit
+250a944427eb41a3a2496e38a8b6c80ff5d4c2fe 0000000000000000000000000000000000000000 Anushka <anushka@Mac.lan> 1756310334 +0530	Branch: renamed refs/heads/main to refs/heads/main
+250a944427eb41a3a2496e38a8b6c80ff5d4c2fe 250a944427eb41a3a2496e38a8b6c80ff5d4c2fe Anushka <anushka@Mac.lan> 1756310334 +0530	Branch: renamed refs/heads/main to refs/heads/main
+250a944427eb41a3a2496e38a8b6c80ff5d4c2fe d2b87291a996c5d50d1c9f2db1efae1156a615bf Anushka <anushka@Mac.lan> 1756310976 +0530	commit: Add .gitignore to clean repo
+d2b87291a996c5d50d1c9f2db1efae1156a615bf f95e18b38c8a0e0fe8ae08f276f7d058418c7d99 Anushka <anushka@Mac.lan> 1756310991 +0530	pull --rebase origin main (start): checkout f95e18b38c8a0e0fe8ae08f276f7d058418c7d99
+f95e18b38c8a0e0fe8ae08f276f7d058418c7d99 d31e0e31dcf52bb2bd3ff1c2ea1b9eab688d5679 Anushka <anushka@Mac.lan> 1756311129 +0530	rebase (continue): Add .gitignore to clean repo
+d31e0e31dcf52bb2bd3ff1c2ea1b9eab688d5679 d31e0e31dcf52bb2bd3ff1c2ea1b9eab688d5679 Anushka <anushka@Mac.lan> 1756311252 +0530	rebase (finish): returning to refs/heads/main
+d31e0e31dcf52bb2bd3ff1c2ea1b9eab688d5679 716e3be991bfbe3dc525a39b3ed2e5c0cbc36c9d Anushka <anushka@Mac.lan> 1756311402 +0530	commit: Remove ignored files from repo
+716e3be991bfbe3dc525a39b3ed2e5c0cbc36c9d 2abeeddc58b6c8dd2ccb6cb94e9737ecbf8d6f03 Anushka <anushka@Mac.lan> 1756311814 +0530	pull --rebase origin main: Fast-forward
+2abeeddc58b6c8dd2ccb6cb94e9737ecbf8d6f03 ae967f8222b75c7ff956a5bd30a7fcb66bf81d1c Anushka <anushka@Mac.lan> 1756312905 +0530	commit: Add Procfile for Render deployment
+ae967f8222b75c7ff956a5bd30a7fcb66bf81d1c 6f07dd9a6ea78ef9eda2cfec8139d3bb3bf82bc7 Anushka <anushka@Mac.lan> 1756313898 +0530	commit: Add gunicorn for deployment
+6f07dd9a6ea78ef9eda2cfec8139d3bb3bf82bc7 f26c05043b269489f2a12ab20ec064a6eb8211d7 Anushka <anushka@Mac.lan> 1756654317 +0530	commit: Update CollegePortal with new changes
+f26c05043b269489f2a12ab20ec064a6eb8211d7 182a96338862ca2f423cc39707234a656c914aba Anushka <anushka@Mac.lan> 1756658014 +0530	commit: Updated homepage info
+182a96338862ca2f423cc39707234a656c914aba 0f9780d3e12afaacc045ba4870a9ab85ccd480db Anushka <anushka@Mac.lan> 1756670602 +0530	commit: Set Comments
+0f9780d3e12afaacc045ba4870a9ab85ccd480db 8beafa6c688d89384ab74294d1d5aa93aafb98ee Anushka <anushka@Mac.lan> 1756675104 +0530	commit: Set timezone to Asia/Kolkata for admin panel

@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block title %}Hostel Information - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-bed me-2"></i>Sadguru Hostel Information</h1>
+            <p class="lead">Complete details about Sadguru Hostel - accommodation, facilities, fees, and contact information</p>
+        </div>
+    </div>
+
+    <!-- Hostel Location -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h2 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i>Location & Contact</h2>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5><i class="fas fa-building me-2"></i>Address</h5>
+                            <p class="mb-3">
+                                <strong>Sadguru Hostel</strong><br>
+                                Kathora, Townshift No. 4<br>
+                                Near P.R. Pote Patil College of Engineering
+                            </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><i class="fas fa-phone me-2"></i>Contact Information</h5>
+                            <p class="mb-0">
+                                <strong>Warden:</strong> <a href="tel:7304664502" class="text-white">7304664502</a><br>
+                                <strong>General Enquiry:</strong> <a href="tel:9890891385" class="text-white">9890891385</a><br>
+                                <strong>Mess Enquiry:</strong> <a href="tel:9850545191" class="text-white">9850545191</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hostel Structure -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Hostel Structure & Capacity</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-building fa-lg"></i>
+                    </div>
+                    <h3 class="text-info">3</h3>
+                    <p class="card-text">Floor Building</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-door-open fa-lg"></i>
+                    </div>
+                    <h3 class="text-success">7</h3>
+                    <p class="card-text">Rooms per Floor</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-bed fa-lg"></i>
+                    </div>
+                    <h3 class="text-warning">5</h3>
+                    <p class="card-text">Beds per Room</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-clock fa-lg"></i>
+                    </div>
+                    <h3 class="text-danger">9:00 PM</h3>
+                    <p class="card-text">Gate Closing Time</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hostel Facilities -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Facilities Provided</h2>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-primary">
+                <div class="card-body text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-wifi fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">High-Speed Wi-Fi</h5>
+                    <p class="text-muted">Reliable internet connectivity for study and entertainment purposes throughout the hostel.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-success">
+                <div class="card-body text-center">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-suitcase-rolling fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Luggage Storage</h5>
+                    <p class="text-muted">Secure storage facility for students' luggage and personal belongings.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-info">
+                <div class="card-body text-center">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-bolt fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">24/7 Utilities</h5>
+                    <p class="text-muted">Continuous water and electricity supply ensuring comfortable living conditions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-warning">
+                <div class="card-body text-center">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-bath fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Attached Bathroom</h5>
+                    <p class="text-muted">Each room comes with attached bathroom facilities for privacy and convenience.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-danger">
+                <div class="card-body text-center">
+                    <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-clock fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Security Hours</h5>
+                    <p class="text-muted">Entry gate closes at 9:00 PM for student safety and security.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-secondary">
+                <div class="card-body text-center">
+                    <div class="bg-secondary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-users fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Shared Living</h5>
+                    <p class="text-muted">5-bed accommodation per room fostering friendship and academic collaboration.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fee Structure -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Fee Structure</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-bed me-2"></i>Sadguru Hostel Fees</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <h3 class="text-primary">₹30,000</h3>
+                        <p class="text-muted">Per Academic Year (1st & 2nd Semester)</p>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Note:</strong> Hostel fees are separate from mess charges
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-utensils me-2"></i>Mess Charges</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <h3 class="text-success">₹2,000</h3>
+                        <p class="text-muted">Per Month</p>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Vegetarian meals only</li>
+                        <li><i class="fas fa-check text-success me-2"></i>All types of vegetarian food</li>
+                        <li><i class="fas fa-clock text-success me-2"></i>Timing: 7:00 AM - 10:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Important Information -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Important Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-home me-2"></i>Accommodation Details:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>3-floor hostel building</li>
+                                <li><i class="fas fa-check text-success me-2"></i>7 rooms per floor</li>
+                                <li><i class="fas fa-check text-success me-2"></i>5 beds per room (shared accommodation)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Attached bathroom in each room</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Near college campus for easy access</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-phone me-2"></i>Contact for Enquiries:</h6>
+                            <div class="mb-3">
+                                <strong>Warden Contact:</strong><br>
+                                <a href="tel:7304664502" class="btn btn-outline-primary btn-sm mt-1">
+                                    <i class="fas fa-phone me-1"></i>7304664502
+                                </a>
+                            </div>
+                            <div class="mb-3">
+                                <strong>General Enquiry:</strong><br>
+                                <a href="tel:9890891385" class="btn btn-outline-success btn-sm mt-1">
+                                    <i class="fas fa-phone me-1"></i>9890891385
+                                </a>
+                            </div>
+                            <div>
+                                <strong>Mess Enquiry:</strong><br>
+                                <a href="tel:9850545191" class="btn btn-outline-warning btn-sm mt-1">
+                                    <i class="fas fa-utensils me-1"></i>9850545191
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning mt-3">
+                        <i class="fas fa-clock me-2"></i>
+                        <strong>Important:</strong> Entry gate closes at 9:00 PM daily. Students must return to hostel by this time.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Map & Additional Info -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Location & Nearby Amenities</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-location-arrow me-2"></i>Strategic Location:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Located in Kathora, Townshift No. 4</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Very close to P.R. Pote Patil College</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Easy access to college facilities</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Safe and secure neighborhood</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Well-connected transport links</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-heart me-2"></i>Why Choose Sadguru Hostel:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-star text-warning me-2"></i>Modern facilities and amenities</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Affordable fee structure</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Pure vegetarian mess facility</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>24/7 support and security</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Study-friendly environment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="fas fa-phone me-2"></i>
+                        <strong>For Admission & Queries:</strong> Contact the warden or general enquiry numbers provided above. Visit the hostel for inspection and room booking.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

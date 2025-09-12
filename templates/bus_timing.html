@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Bus Timing - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-bus me-2"></i>College Bus Timing</h1>
+            <p class="lead">Live bus schedule and route information</p>
+        </div>
+    </div>
+
+    {% if timings %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Route</th>
+                                    <th>Bus No.</th>
+                                    <th>Departure</th>
+                                    <th>Departure Location</th>
+                                    <th>Arrival</th>
+                                    <th>Arrival Location</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for timing in timings %}
+                                <tr>
+                                    <td>
+                                        <span class="badge bg-primary">{{ timing.route_name }}</span>
+                                    </td>
+                                    <td>
+                                        {% if timing.bus_number %}
+                                        <span class="badge bg-secondary">{{ timing.bus_number }}</span>
+                                        {% else %}
+                                        <span class="text-muted">TBA</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-clock me-1"></i>{{ timing.departure_time }}
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-map-marker-alt me-1"></i>{{ timing.departure_location }}
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-clock me-1"></i>{{ timing.arrival_time }}
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-map-marker-alt me-1"></i>{{ timing.arrival_location }}
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">On Time</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-bus fa-4x text-muted mb-3"></i>
+                    <h3>No Bus Schedule Available</h3>
+                    <p class="text-muted">Bus timing information will be displayed here once available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Important Information -->
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <div class="card bg-info text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>Bus Service Information
+                    </h5>
+                    <ul class="mb-0">
+                        <li>Buses operate Monday to Saturday</li>
+                        <li>No service on Sundays and holidays</li>
+                        <li>Arrive 5 minutes before departure time</li>
+                        <li>Valid college ID required</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Important Notes
+                    </h5>
+                    <ul class="mb-0">
+                        <li>Timings may vary due to traffic conditions</li>
+                        <li>Check for announcements regarding delays</li>
+                        <li>Emergency contact: Bus Coordinator</li>
+                        <li>Report any issues to transport department</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

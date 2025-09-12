@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}Canteen Menu - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-utensils me-2"></i>Canteen Menu & Schedule</h1>
+            <p class="lead">Fresh meals and snacks with affordable pricing</p>
+        </div>
+    </div>
+
+    <!-- Menu Categories -->
+    <div class="row mb-4">
+        <!-- Appetizers -->
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="fas fa-hamburger me-2"></i>Appetizers
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Burger</span>
+                            <span class="badge bg-success">₹60</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Veg Sandwich</span>
+                            <span class="badge bg-success">₹60</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Maggi</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Masala Corns</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snacks & Quick Bites -->
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-cookie-bite me-2"></i>Snacks & Quick Bites
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Samosa</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Kachori</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Palak Vada</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Aloo Bonda</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Vada Pav</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Pakode</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Bhel</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Bhajiye</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Sabudana Usal</span>
+                            <span class="badge bg-success">₹30</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Poha (Half)</span>
+                            <span class="badge bg-success">₹15</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Poha (Full)</span>
+                            <span class="badge bg-success">₹25</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>French Fries</span>
+                            <span class="badge bg-success">₹40</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <!-- Beverages -->
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-coffee me-2"></i>Beverages
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Tea (Half)</span>
+                            <span class="badge bg-success">₹7</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Tea (Full)</span>
+                            <span class="badge bg-success">₹10</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Coffee</span>
+                            <span class="badge bg-success">₹15</span>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Lemon Tea</span>
+                            <span class="badge bg-success">₹12</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Others -->
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-box me-2"></i>Others
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Packed Food & Beverages</span>
+                            <span class="badge bg-info">As per MRP</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Canteen Information -->
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-clock me-2"></i>Operating Hours
+                    </h5>
+                    <ul class="mb-0">
+                        <li><strong>Monday to Friday:</strong> Morning 7:30 AM | Evening 6:00 PM</li>
+                        <li><strong>Saturday:</strong> Morning 7:00 AM | Evening 4:30 PM</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                        <li><strong>Holidays:</strong> Closed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>Guidelines
+                    </h5>
+                    <ul class="mb-0">
+                        <li>Maintain queue discipline</li>
+                        <li>Keep the canteen area clean</li>
+                        <li>No outside food allowed</li>
+                        <li>Report any issues to canteen staff</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

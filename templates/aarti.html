@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Aarti Schedule - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-pray me-2"></i>Aarti Schedule</h1>
+            <p class="lead">Daily and weekly spiritual events schedule for campus</p>
+        </div>
+    </div>
+
+    {% if schedules %}
+    <div class="row">
+        {% for schedule in schedules %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title mb-0">{{ schedule.day }}</h5>
+                            <small class="text-muted">{{ schedule.time }}</small>
+                        </div>
+                    </div>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt me-2"></i>{{ schedule.location }}
+                    </p>
+                    {% if schedule.description %}
+                    <p class="card-text">{{ schedule.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-pray fa-4x text-muted mb-3"></i>
+                    <h3>No Aarti Schedule Available</h3>
+                    <p class="text-muted">Spiritual event schedules will be displayed here once available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- General Information Card -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>About Campus Aarti
+                    </h5>
+                    <p class="card-text">
+                        The campus aarti is a spiritual gathering that brings together students and faculty for daily prayers and meditation. 
+                        These sessions help create a peaceful environment and promote spiritual well-being among the college community.
+                    </p>
+                    <p class="card-text mb-0">
+                        <strong>Note:</strong> All students are welcome to participate. Please maintain silence and respect during the spiritual gatherings.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

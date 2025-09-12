@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-search me-2"></i>Search Results
+            </h1>
+            <p class="lead">Search results for: <strong>"{{ query }}"</strong></p>
+        </div>
+    </div>
+
+    <!-- Books Results -->
+    {% if results.books %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3">
+                <i class="fas fa-book me-2"></i>Library Books ({{ results.books|length }} found)
+            </h3>
+        </div>
+        {% for book in results.books %}
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">{{ book.title }}</h6>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <i class="fas fa-user me-1"></i>{{ book.author }}
+                            {% if book.subject %}
+                            <br><i class="fas fa-tag me-1"></i>{{ book.subject }}
+                            {% endif %}
+                        </small>
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge {% if book.available_copies > 0 %}bg-success{% else %}bg-danger{% endif %}">
+                            {{ book.available_copies }}/{{ book.total_copies }} Available
+                        </span>
+                        <a href="{{ url_for('library') }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Faculty Results -->
+    {% if results.faculty %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3">
+                <i class="fas fa-users me-2"></i>Faculty ({{ results.faculty|length }} found)
+            </h3>
+        </div>
+        {% for member in results.faculty %}
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h6 class="card-title mb-0">{{ member.name }}</h6>
+                            <small class="text-muted">{{ member.department }}</small>
+                        </div>
+                    </div>
+                    {% if member.designation %}
+                    <p class="card-text small">{{ member.designation }}</p>
+                    {% endif %}
+                    <div class="d-flex gap-2">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="btn btn-sm btn-primary">
+                            <i class="fas fa-envelope me-1"></i>Email
+                        </a>
+                        {% endif %}
+                        <a href="{{ url_for('faculty') }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Events Results -->
+    {% if results.events %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3">
+                <i class="fas fa-star me-2"></i>Events ({{ results.events|length }} found)
+            </h3>
+        </div>
+        {% for event in results.events %}
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h6 class="card-title mb-0">{{ event.title }}</h6>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>{{ event.date.strftime('%B %d, %Y') }}
+                            </small>
+                        </div>
+                    </div>
+                    {% if event.description %}
+                    <p class="card-text small">{{ event.description[:100] }}{% if event.description|length > 100 %}...{% endif %}</p>
+                    {% endif %}
+                    <div class="d-flex justify-content-between align-items-center">
+                        {% if event.venue %}
+                        <small class="text-muted">
+                            <i class="fas fa-map-marker-alt me-1"></i>{{ event.venue }}
+                        </small>
+                        {% endif %}
+                        <a href="{{ url_for('events') }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Clubs Results -->
+    {% if results.clubs %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3">
+                <i class="fas fa-users-cog me-2"></i>Clubs ({{ results.clubs|length }} found)
+            </h3>
+        </div>
+        {% for club in results.clubs %}
+        <div class="col-lg-4 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h6 class="card-title mb-0">{{ club.name }}</h6>
+                        </div>
+                    </div>
+                    {% if club.description %}
+                    <p class="card-text small">{{ club.description[:100] }}{% if club.description|length > 100 %}...{% endif %}</p>
+                    {% endif %}
+                    <div class="d-flex justify-content-between align-items-center">
+                        {% if club.contact_email %}
+                        <a href="mailto:{{ club.contact_email }}" class="btn btn-sm btn-info">
+                            <i class="fas fa-envelope me-1"></i>Contact
+                        </a>
+                        {% endif %}
+                        <a href="{{ url_for('clubs') }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+  <!-- Timetable Results -->
+  {% if results.timetable %}
+  <div class="row mb-5">
+      <div class="col-12">
+          <h3 class="mb-3">
+              <i class="fas fa-calendar-alt me-2"></i>Timetable ({{ results.timetable|length }} found)
+          </h3>
+      </div>
+      <div class="col-12">
+          <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th>Course</th>
+                          <th>Subject</th>
+                          <th>Day</th>
+                          <th>Time</th>
+                          <th>Faculty</th>
+                          <th>Room</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for item in results.timetable %}
+                      <tr>
+                          <td>{{ item.course }}</td>
+                          <td>{{ item.subject }}</td>
+                          <td>{{ item.day }}</td>
+                          <td>{{ item.time_slot }}</td>
+                          <td>{{ item.faculty }}</td>
+                          <td>{{ item.room }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+  {% endif %}
+  <!-- Past Papers Results -->
+  {% if results.papers %}
+  <div class="row mb-5">
+      <div class="col-12">
+          <h3 class="mb-3">
+              <i class="fas fa-file-alt me-2"></i>Past Papers ({{ results.papers|length }} found)
+          </h3>
+      </div>
+      {% for paper in results.papers %}
+      <div class="col-lg-4 col-md-6 mb-3">
+          <div class="card">
+              <div class="card-body">
+                  <div class="d-flex align-items-center mb-2">
+                      <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <i class="fas fa-file-alt"></i>
+                      </div>
+                      <div>
+                          <h6 class="card-title mb-0">{{ paper.subject }}</h6>
+                          <small class="text-muted">{{ paper.course }} - {{ paper.semester }}</small>
+                      </div>
+                  </div>
+                  <p class="card-text small">
+                      <strong>Year:</strong> {{ paper.year }}<br>
+                      <strong>Type:</strong> {{ paper.exam_type }}
+                  </p>
+                  <a href="{{ url_for('past_papers') }}" class="btn btn-sm btn-outline-primary">View Details</a>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+  <!-- Companies Results -->
+  {% if results.companies %}
+  <div class="row mb-5">
+      <div class="col-12">
+          <h3 class="mb-3">
+              <i class="fas fa-building me-2"></i>Companies ({{ results.companies|length }} found)
+          </h3>
+      </div>
+      {% for company in results.companies %}
+      <div class="col-lg-4 col-md-6 mb-3">
+          <div class="card">
+              <div class="card-body">
+                  <div class="d-flex align-items-center mb-2">
+                      <div class="bg-secondary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <i class="fas fa-building"></i>
+                      </div>
+                      <div>
+                          <h6 class="card-title mb-0">{{ company.name }}</h6>
+                          <small class="text-muted">
+                              <i class="fas fa-calendar me-1"></i>{{ company.visit_date.strftime('%B %d, %Y') }}
+                          </small>
+                      </div>
+                  </div>
+                  {% if company.job_roles %}
+                  <p class="card-text small">{{ company.job_roles[:100] }}{% if company.job_roles|length > 100 %}...{% endif %}</p>
+                  {% endif %}
+                  <div class="d-flex justify-content-between align-items-center">
+                      {% if company.package_offered %}
+                      <small class="text-success">
+                          <i class="fas fa-money-bill-wave me-1"></i>{{ company.package_offered }}
+                      </small>
+                      {% endif %}
+                      <a href="{{ url_for('companies') }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+
+    <!-- No Results -->
+     {% if not (results.books or results.faculty or results.events or results.clubs or results.timetable or results.papers or results.companies) %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                    <h3>No Results Found</h3>
+                    <p class="text-muted">No results found for "{{ query }}". Try different search terms or browse our sections:</p>
+                    <div class="d-flex gap-2 justify-content-center flex-wrap mt-4">
+                        <a href="{{ url_for('library') }}" class="btn btn-outline-primary">Library</a>
+                        <a href="{{ url_for('faculty') }}" class="btn btn-outline-primary">Faculty</a>
+                        <a href="{{ url_for('events') }}" class="btn btn-outline-primary">Events</a>
+                        <a href="{{ url_for('clubs') }}" class="btn btn-outline-primary">Clubs</a>
+                        <a href="{{ url_for('timetable') }}" class="btn btn-outline-primary">Timetable</a>
+                        <a href="{{ url_for('past_papers') }}" class="btn btn-outline-primary">Past Papers</a>
+                        <a href="{{ url_for('companies') }}" class="btn btn-outline-primary">Companies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Search Tips -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-lightbulb me-2"></i>Search Tips
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="mb-0">
+                                <li>Use specific keywords for better results</li>
+                                <li>Try partial matches if exact search fails</li>
+                                <li>Search by department, subject, or category</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="mb-0">
+                                <li>Use faculty names or book titles</li>
+                                <li>Search for event names or descriptions</li>
+                                <li>Club names and activities are searchable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

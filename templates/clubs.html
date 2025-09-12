@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}College Clubs - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-users-cog me-2"></i>College Clubs</h1>
+            <p class="lead">Discover and join various college clubs to enhance your skills and interests</p>
+        </div>
+    </div>
+
+    {% if clubs %}
+    <div class="row">
+        {% for club in clubs %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title mb-0">{{ club.name }}</h5>
+                        </div>
+                    </div>
+                    
+                    {% if club.description %}
+                    <p class="card-text">{{ club.description }}</p>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        {% if club.meeting_day and club.meeting_time %}
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>
+                            Meetings: {{ club.meeting_day }} at {{ club.meeting_time }}
+                        </small>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if club.contact_person or club.contact_email %}
+                <div class="card-footer bg-transparent">
+                    {% if club.contact_person %}
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-user-tie me-2 text-muted"></i>
+                        <small>{{ club.contact_person }}</small>
+                    </div>
+                    {% endif %}
+                    {% if club.contact_email %}
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-envelope me-2 text-muted"></i>
+                        <small><a href="mailto:{{ club.contact_email }}" class="text-decoration-none">{{ club.contact_email }}</a></small>
+                    </div>
+                    {% endif %}
+                    {% if club.whatsapp_link %}
+                    <div class="d-flex align-items-center">
+                        <a href="{{ club.whatsapp_link }}" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-sm d-flex align-items-center">
+                            <i class="fab fa-whatsapp me-2"></i>Join WhatsApp Group
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-users fa-4x text-muted mb-3"></i>
+                    <h3>No Clubs Information Available</h3>
+                    <p class="text-muted">College clubs information will be displayed here once available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Join a Club Information -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-handshake me-2"></i>How to Join a Club
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Benefits of Joining:</h6>
+                            <ul>
+                                <li>Develop new skills and interests</li>
+                                <li>Network with like-minded students</li>
+                                <li>Participate in college events and competitions</li>
+                                <li>Build leadership and teamwork skills</li>
+                                <li>Enhance your resume and portfolio</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Steps to Join:</h6>
+                            <ol>
+                                <li>Contact the club coordinator</li>
+                                <li>Attend a club meeting or orientation</li>
+                                <li>Fill out the membership form</li>
+                                <li>Pay any applicable membership fees</li>
+                                <li>Start participating in club activities</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Tip:</strong> You can join multiple clubs based on your interests and time availability!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

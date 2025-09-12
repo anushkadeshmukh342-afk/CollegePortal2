@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}Events - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4"><i class="fas fa-star me-2"></i>Event Information</h1>
+            <p class="lead">Complete timeline and details of college events and programs</p>
+        </div>
+    </div>
+
+    {% if events %}
+    <!-- Timeline View -->
+    <div class="row">
+        <div class="col-12">
+            <div class="timeline">
+                {% for event in events %}
+                <div class="timeline-item mb-4">
+                    <div class="row">
+                        <div class="col-md-3 text-md-end">
+                            <div class="timeline-date">
+                                <div class="bg-primary text-white rounded p-3 text-center">
+                                    <div class="h5 mb-0">{{ event.date.strftime('%d') }}</div>
+                                    <div class="small">{{ event.date.strftime('%b %Y') }}</div>
+                                </div>
+                                {% if event.time %}
+                                <div class="text-muted small mt-2">
+                                    <i class="fas fa-clock me-1"></i>{{ event.time }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start justify-content-between mb-3">
+                                        <div>
+                                            <h5 class="card-title mb-1">{{ event.title }}</h5>
+                                            {% if event.organizer %}
+                                            <small class="text-muted">
+                                                <i class="fas fa-user-tie me-1"></i>Organized by {{ event.organizer }}
+                                            </small>
+                                            {% endif %}
+                                        </div>
+                                        {% set days_left = (event.date - today).days %}
+                                        {% if days_left == 0 %}
+                                        <span class="badge bg-success">Today</span>
+                                        {% elif days_left == 1 %}
+                                        <span class="badge bg-warning">Tomorrow</span>
+                                        {% elif days_left > 0 %}
+                                        <span class="badge bg-info">{{ days_left }} days left</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary">Completed</span>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    {% if event.description %}
+                                    <p class="card-text">{{ event.description }}</p>
+                                    {% endif %}
+                                    
+                                    {% if event.venue %}
+                                    <div class="d-flex align-items-center text-muted mb-3">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>{{ event.venue }}</span>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {% if event.file_path %}
+                                    <div class="mt-3">
+                                        <a href="{{ event.file_path }}" class="btn btn-primary btn-sm" target="_blank">
+                                            <i class="fas fa-file-pdf me-2"></i>View Event Details (PDF)
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
+                    <h3>No Events Information Available</h3>
+                    <p class="text-muted">Event timeline will be displayed here once events are scheduled.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Event Categories -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Event Categories</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-primary">
+                <div class="card-body text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-graduation-cap fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Academic Events</h6>
+                    <p class="card-text small">Seminars, workshops, guest lectures, and academic competitions</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-success">
+                <div class="card-body text-center">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-theater-masks fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Cultural Programs</h6>
+                    <p class="card-text small">Annual fest, cultural nights, dance and music competitions</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-info">
+                <div class="card-body text-center">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-trophy fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Sports Events</h6>
+                    <p class="card-text small">Inter-college tournaments, sports day, and recreational activities</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-warning">
+                <div class="card-body text-center">
+                    <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-handshake fa-lg"></i>
+                    </div>
+                    <h6 class="card-title">Social Events</h6>
+                    <p class="card-text small">Community service, awareness programs, and volunteer activities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Annual Calendar Highlights -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-calendar-alt me-2"></i>Annual Event Calendar Highlights
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Major Events:</h6>
+                            <ul>
+                                <li><strong>Techno-Cultural Fest (February):</strong> 3-day mega event with technical and cultural competitions</li>
+                                <li><strong>Sports Week (March):</strong> Inter-departmental and inter-college sports competitions</li>
+                                <li><strong>Annual Day (April):</strong> Celebration of college achievements and recognition</li>
+                                <li><strong>Fresher's Welcome (August):</strong> Orientation and welcome program for new students</li>
+                                <li><strong>Engineer's Day (September):</strong> Technical exhibitions and engineering competitions</li>
+                                <li><strong>Cultural Night (December):</strong> End-of-year cultural celebration</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Regular Programs:</h6>
+                            <ul>
+                                <li><strong>Guest Lectures:</strong> Monthly industry expert sessions</li>
+                                <li><strong>Workshop Series:</strong> Bi-weekly skill development workshops</li>
+                                <li><strong>Club Activities:</strong> Weekly meetings and events</li>
+                                <li><strong>Project Exhibitions:</strong> Semester-end project showcases</li>
+                                <li><strong>Industry Visits:</strong> Quarterly educational tours</li>
+                                <li><strong>Placement Drives:</strong> Ongoing throughout the year</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Participation Guidelines -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-clipboard-list me-2"></i>Event Participation Guidelines
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>For Students:</h6>
+                            <ul>
+                                <li>Registration required for most events</li>
+                                <li>Follow event-specific dress code</li>
+                                <li>Arrive 15 minutes before start time</li>
+                                <li>Maintain discipline and college decorum</li>
+                                <li>Participation certificates provided</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Event Organization:</h6>
+                            <ul>
+                                <li>Submit proposal 30 days in advance</li>
+                                <li>Get approval from administration</li>
+                                <li>Coordinate with respective departments</li>
+                                <li>Arrange necessary permissions and resources</li>
+                                <li>Submit post-event report</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Note:</strong> Event participation contributes to overall personality development and may be considered in academic assessments.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
