@@ -949,3 +949,32 @@ footer::before {
     background: var(--dark-blue);
 }
 
+
+
+/* Emoji styling for card icons */
+.card-icon-emoji, .feature-icon-emoji {
+    font-size: 3rem;
+    line-height: 1;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
