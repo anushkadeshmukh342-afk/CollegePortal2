@@ -83,6 +83,7 @@ def init_sample_data():
         
         db.session.add_all(past_papers[:50])  # Add first 50 papers
         
+        
         # Sample Bus Timings
         bus_timings = [
             BusTiming(route_name='Amravati Station - College', departure_time='7:30 AM', departure_location='Amravati Railway Station', arrival_time='8:00 AM', arrival_location='College Main Gate', bus_number='AP-101'),
@@ -108,59 +109,6 @@ def init_sample_data():
             Club(name='E-Cell (Innovation Club)', description='Foster entrepreneurship, startup ideas, and innovation projects. Join our entrepreneurship community!', contact_person='Dr. Anil Sharma', contact_email='innovation@prpcem.ac.in', meeting_day='Wednesday', meeting_time='2:00 PM', whatsapp_link='https://chat.whatsapp.com/DgTiWKJQxuIJsVy1ZsEJH9?mode=ac_t')
         ]
         db.session.add_all(clubs)
-        
-        # Sample Canteen Menu
-        menu_items = [
-            # Monday
-            CanteenMenu(day='Monday', meal_type='breakfast', item_name='Poha', price=25.0),
-            CanteenMenu(day='Monday', meal_type='breakfast', item_name='Tea/Coffee', price=10.0),
-            CanteenMenu(day='Monday', meal_type='lunch', item_name='Dal Rice', price=60.0),
-            CanteenMenu(day='Monday', meal_type='lunch', item_name='Chapati Sabji', price=50.0),
-            CanteenMenu(day='Monday', meal_type='dinner', item_name='Rajma Rice', price=70.0),
-            
-            # Tuesday
-            CanteenMenu(day='Tuesday', meal_type='breakfast', item_name='Upma', price=30.0),
-            CanteenMenu(day='Tuesday', meal_type='breakfast', item_name='Tea/Coffee', price=10.0),
-            CanteenMenu(day='Tuesday', meal_type='lunch', item_name='Chole Bhature', price=80.0),
-            CanteenMenu(day='Tuesday', meal_type='lunch', item_name='Salad', price=20.0),
-            CanteenMenu(day='Tuesday', meal_type='dinner', item_name='Paneer Curry', price=90.0),
-            
-            # Wednesday
-            CanteenMenu(day='Wednesday', meal_type='breakfast', item_name='Paratha', price=35.0),
-            CanteenMenu(day='Wednesday', meal_type='breakfast', item_name='Curd', price=15.0),
-            CanteenMenu(day='Wednesday', meal_type='lunch', item_name='Biryani', price=120.0),
-            CanteenMenu(day='Wednesday', meal_type='lunch', item_name='Raita', price=25.0),
-            CanteenMenu(day='Wednesday', meal_type='dinner', item_name='Mixed Vegetable', price=65.0),
-            
-            # Thursday
-            CanteenMenu(day='Thursday', meal_type='breakfast', item_name='Idli Sambar', price=40.0),
-            CanteenMenu(day='Thursday', meal_type='breakfast', item_name='Coconut Chutney', price=15.0),
-            CanteenMenu(day='Thursday', meal_type='lunch', item_name='South Indian Thali', price=100.0),
-            CanteenMenu(day='Thursday', meal_type='lunch', item_name='Pickle', price=10.0),
-            CanteenMenu(day='Thursday', meal_type='dinner', item_name='Sambar Rice', price=55.0),
-            
-            # Friday
-            CanteenMenu(day='Friday', meal_type='breakfast', item_name='Sandwich', price=45.0),
-            CanteenMenu(day='Friday', meal_type='breakfast', item_name='Fresh Juice', price=30.0),
-            CanteenMenu(day='Friday', meal_type='lunch', item_name='Special Thali', price=110.0),
-            CanteenMenu(day='Friday', meal_type='lunch', item_name='Sweet Dish', price=35.0),
-            CanteenMenu(day='Friday', meal_type='dinner', item_name='Fried Rice', price=75.0),
-            
-            # Saturday
-            CanteenMenu(day='Saturday', meal_type='breakfast', item_name='Dosa', price=50.0),
-            CanteenMenu(day='Saturday', meal_type='breakfast', item_name='Tea/Coffee', price=10.0),
-            CanteenMenu(day='Saturday', meal_type='lunch', item_name='Gujarati Thali', price=95.0),
-            CanteenMenu(day='Saturday', meal_type='lunch', item_name='Buttermilk', price=20.0),
-            CanteenMenu(day='Saturday', meal_type='dinner', item_name='Pasta', price=85.0),
-            
-            # Sunday
-            CanteenMenu(day='Sunday', meal_type='breakfast', item_name='Puri Bhaji', price=55.0),
-            CanteenMenu(day='Sunday', meal_type='breakfast', item_name='Lassi', price=25.0),
-            CanteenMenu(day='Sunday', meal_type='lunch', item_name='Special Sunday Meal', price=130.0),
-            CanteenMenu(day='Sunday', meal_type='lunch', item_name='Ice Cream', price=40.0),
-            CanteenMenu(day='Sunday', meal_type='dinner', item_name='Chinese Combo', price=100.0),
-        ]
-        db.session.add_all(menu_items)
         
         # Sample Books
         books = [
@@ -231,16 +179,6 @@ def init_sample_data():
             AuditoriumBooking(event_name='Research Paper Presentation', date=today + timedelta(days=19), start_time='1:00 PM', end_time='5:00 PM', organizer='Research Committee', contact='+91 7212 234572')
         ]
         db.session.add_all(auditorium_bookings)
-        
-        # Sample Comments
-        comments = [
-            Comment(name='Arjun Patel', email='arjun.patel@student.prpcem.ac.in', content='Great initiative! The QR code system makes accessing information so much easier. Love the new campus portal!', ip_address='192.168.1.100'),
-            Comment(name='Sneha Sharma', email='sneha.sharma@student.prpcem.ac.in', content='The timetable feature is incredibly helpful. No more confusion about class schedules. Thank you for this!', ip_address='192.168.1.101'),
-            Comment(name='Rahul Joshi', email='rahul.joshi@student.prpcem.ac.in', content='Amazing work on the website. The canteen menu feature helps me plan my meals better. Keep it up!', ip_address='192.168.1.102'),
-            Comment(name='Priya Singh', email='priya.singh@student.prpcem.ac.in', content='The bus timing information is very accurate and helpful for daily commute. Great job by the development team!', ip_address='192.168.1.103'),
-            Comment(name='Amit Gupta', email='amit.gupta@student.prpcem.ac.in', content='Love the clean design and easy navigation. The club information section helped me join the coding club!', ip_address='192.168.1.104')
-        ]
-        db.session.add_all(comments)
         
         # Commit all changes
         db.session.commit()
