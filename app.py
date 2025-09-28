@@ -44,11 +44,11 @@ def init_sample_data():
     events = [
     
         # Events with OneDrive PDF links
-        Event(title='TechnoLean 2024', description='Annual technical symposium showcasing innovative projects and latest technology trends', date=date(2025, 10, 15), time='9:00 AM', venue='Main Auditorium', organizer='Technical Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EZryKikeNmdKkC7xfAbsdbQBTWihCgdU8NxwwhLV53RQwg?e=e7wWyV'),
-        Event(title='Ganpati Bappa Celebration', description='Grand celebration of Lord Ganesha festival with cultural programs and community participation', date=date(2025, 9, 29), time='10:00 AM', venue='College Campus', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EW2QfhDjW3RNik6ypI3yuCUB9wtV_8fYB4L7XoIUYTW1yg?e=xZaxIv'),
-        Event(title='DJ Night 2024', description='Electrifying DJ night with music, dance and entertainment for all students', date=date(2025, 10, 25), time='7:00 PM', venue='Open Ground', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/Ef5jDnU5BotJqtcWeKK0M-YBMevaDWfJuUNp3qcNqgpImA?e=rzMAqQ'),
-        Event(title='Dindi Procession', description='Traditional Dindi procession celebrating cultural heritage and community spirit', date=date(2025, 10, 5), time='6:00 AM', venue='College to Temple Route', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EfnLwM5prPtJrqDw3xqMlY8BskAHuh6xIlIKWWOayNgR3w?e=0h4us7'),
-        Event(title='Dahi Handi Festival', description='Exciting Dahi Handi celebration with teams competing and traditional festivities', date=date(2025, 8, 30), time='11:00 AM', venue='Sports Ground', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/Ed-Sl0HSkZpPkOCVbEYW43sBbWbJLwU0okd3y4hhuOXeyQ?e=IPzzYo')
+        Event(title='Techloans 2025', description='Annual technical symposium showcasing innovative projects and latest technology trends', date=date(2025, 1, 20), time='11:00 AM', venue='College Campus', organizer='Technical Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EZryKikeNmdKkC7xfAbsdbQBTWihCgdU8NxwwhLV53RQwg?e=e7wWyV'),
+        Event(title='Ganesh Utsav 2025', description='Grand celebration of Lord Ganesha festival with cultural programs and community participation', date=date(2025, 8, 29), time='11:00 AM', venue='College Campus', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EW2QfhDjW3RNik6ypI3yuCUB9wtV_8fYB4L7XoIUYTW1yg?e=xZaxIv'),
+        Event(title='DJ Night 2025', description='Electrifying DJ night with music, dance and entertainment for all students', date=date(2025, 1, 26), time='7:00 PM', venue='Open Ground', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/Ef5jDnU5BotJqtcWeKK0M-YBMevaDWfJuUNp3qcNqgpImA?e=rzMAqQ'),
+        Event(title='Dindi Procession 2025', description='Traditional Dindi procession celebrating cultural heritage and community spirit', date=date(2025, 1, 23), time='9:00 AM', venue='Gajanana Maharaj Panchvati Mandir, Pote Township', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EfnLwM5prPtJrqDw3xqMlY8BskAHuh6xIlIKWWOayNgR3w?e=0h4us7'),
+        Event(title='Dahi Handi Festival 2025', description='Exciting Dahi Handi celebration with teams competing and traditional festivities', date=date(2025, 9, 2), time='11:00 AM', venue='Sports Ground', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/Ed-Sl0HSkZpPkOCVbEYW43sBbWbJLwU0okd3y4hhuOXeyQ?e=IPzzYo')
     ]
     db.session.add_all(events)
     
@@ -89,13 +89,35 @@ def init_sample_data():
             Company(name='HCL Technologies', visit_date=today + timedelta(days=38), job_roles='Software Engineer, Technical Lead', package_offered='3.9-6.8 LPA', students_placed=33)
         ]
     db.session.add_all(companies)
+    
+    # Sample Books
+    books = [
+            Book(title='Data Structures and Algorithms', author='Cormen, Leiserson, Rivest', isbn='978-0262033848', subject='Computer Science', available_copies=15, total_copies=20),
+            Book(title='Database System Concepts', author='Silberschatz, Galvin, Gagne', isbn='978-0073523323', subject='Database Management', available_copies=12, total_copies=18),
+            Book(title='Computer Networks', author='Andrew Tanenbaum', isbn='978-0132126953', subject='Networking', available_copies=8, total_copies=15),
+            Book(title='Operating System Concepts', author='Galvin, Gagne, Silberschatz', isbn='978-1118063330', subject='Operating Systems', available_copies=10, total_copies=16),
+            Book(title='Engineering Mathematics', author='B.S. Grewal', isbn='978-8174091451', subject='Mathematics', available_copies=25, total_copies=30),
+            Book(title='Thermodynamics', author='Cengel & Boles', isbn='978-0073398174', subject='Mechanical Engineering', available_copies=14, total_copies=20),
+            Book(title='Digital Electronics', author='Morris Mano', isbn='978-0132145398', subject='Electronics', available_copies=11, total_copies=18),
+            Book(title='Structural Analysis', author='R.C. Hibbeler', isbn='978-0134610672', subject='Civil Engineering', available_copies=9, total_copies=15),
+            Book(title='Programming in C', author='Dennis Ritchie', isbn='978-0131103627', subject='Programming', available_copies=20, total_copies=25),
+            Book(title='Engineering Physics', author='Gaur & Gupta', isbn='978-8173714498', subject='Physics', available_copies=18, total_copies=22)
+        ]
+    db.session.add_all(books)
 
     # Sample Faculty
     faculty_list = [
-        Faculty(name='Dr. Rajesh Sharma', department='Computer Engineering', designation='Professor & HOD', email='rajesh.sharma@prpcem.ac.in', phone='+91 7212 234567', cabin_number='A-201'),
-        Faculty(name='Prof. Priya Patel', department='Computer Engineering', designation='Associate Professor', email='priya.patel@prpcem.ac.in', phone='+91 7212 234568', cabin_number='B-105'),
-        Faculty(name='Dr. Anil Kumar', department='Electronics Engineering', designation='Professor', email='anil.kumar@prpcem.ac.in', phone='+91 7212 234569', cabin_number='C-301')
-    ]
+            Faculty(name='Dr. Rajesh Sharma', department='Computer Engineering', designation='Professor & HOD', email='rajesh.sharma@prpcem.ac.in', phone='+91 7212 234567', cabin_number='A-201'),
+            Faculty(name='Prof. Priya Patel', department='Information Technology', designation='Associate Professor', email='priya.patel@prpcem.ac.in', phone='+91 7212 234568', cabin_number='B-105'),
+            Faculty(name='Dr. Anil Kumar', department='Electronics Engineering', designation='Professor', email='anil.kumar@prpcem.ac.in', phone='+91 7212 234569', cabin_number='C-301'),
+            Faculty(name='Prof. Sunita Joshi', department='Mechanical Engineering', designation='Assistant Professor', email='sunita.joshi@prpcem.ac.in', phone='+91 7212 234570', cabin_number='D-202'),
+            Faculty(name='Dr. Rahul Mehta', department='Civil Engineering', designation='Professor & Dean', email='rahul.mehta@prpcem.ac.in', phone='+91 7212 234571', cabin_number='Admin-301'),
+            Faculty(name='Prof. Kavita Singh', department='Computer Engineering', designation='Associate Professor', email='kavita.singh@prpcem.ac.in', phone='+91 7212 234572', cabin_number='A-205'),
+            Faculty(name='Dr. Suresh Gupta', department='Information Technology', designation='Professor', email='suresh.gupta@prpcem.ac.in', phone='+91 7212 234573', cabin_number='B-108'),
+            Faculty(name='Prof. Anjali Desai', department='Electronics Engineering', designation='Assistant Professor', email='anjali.desai@prpcem.ac.in', phone='+91 7212 234574', cabin_number='C-205'),
+            Faculty(name='Dr. Vikram Shah', department='Mechanical Engineering', designation='Professor', email='vikram.shah@prpcem.ac.in', phone='+91 7212 234575', cabin_number='D-301'),
+            Faculty(name='Prof. Ritu Agarwal', department='Civil Engineering', designation='Associate Professor', email='ritu.agarwal@prpcem.ac.in', phone='+91 7212 234576', cabin_number='E-102')
+        ]
     db.session.add_all(faculty_list)
     
     
