@@ -33,7 +33,7 @@ from routes import *
 
 def init_sample_data():
     """Initialize database with sample data including events with OneDrive links"""
-    from models import Event, AartiSchedule, Club, Faculty, Timetable
+    from models import Event, AartiSchedule, Club, Faculty, Timetable, PastPaper, Company, Book
     from datetime import datetime, date, timedelta
     import random
     
@@ -51,6 +51,51 @@ def init_sample_data():
         Event(title='Dahi Handi Festival 2025', description='Exciting Dahi Handi celebration with teams competing and traditional festivities', date=date(2025, 9, 2), time='11:00 AM', venue='Sports Ground', organizer='Cultural Committee', file_path='https://1drv.ms/b/c/ADA7036725D1B12A/Ed-Sl0HSkZpPkOCVbEYW43sBbWbJLwU0okd3y4hhuOXeyQ?e=IPzzYo')
     ]
     db.session.add_all(events)
+    
+    # Sample Past Papers (with OneDrive PDF links)
+    past_papers = [
+        PastPaper(
+            subject='Previous Year Questions',
+            course='Civil & Mechanical Engineering',
+            semester='1st & 2nd',
+            year=2024,
+            exam_type='Previous Year Papers',
+            file_path='https://1drv.ms/b/c/ADA7036725D1B12A/ERdRFwjLSYJAt_0wbSWVHywB89ZZX9TRSioW7yIGK7oO9A?e=S8OOIu'
+        ),
+        PastPaper(
+            subject='Computer Science & Engineering',
+            course='CSE, AIML, AIDS',
+            semester='1st Semester',
+            year=2024,
+            exam_type='Previous Year Papers',
+            file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EdE_G7qJcIFKj4A3-ygXm4QBrayr2iIs1WVT408FwTBACA?e=yV9PAJ'
+        ),
+        PastPaper(
+            subject='Computer Science & Engineering',
+            course='CSE, AIML, AIDS',
+            semester='2nd Semester',
+            year=2024,
+            exam_type='Previous Year Papers',
+            file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EeTM_7qqUIpFqN5B2TYR0cIBu5fEvfIGQ9kcacA59qaDbA?e=Yop1XP'
+        ),
+        PastPaper(
+            subject='Previous Year Questions',
+            course='Electrical Engineering',
+            semester='1st & 2nd',
+            year=2024,
+            exam_type='Previous Year Papers',
+            file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EXLLcl17hiBJtljouBb8jd0BiuO1tnqXZSAkTi9FmCxDIg?e=Gczz3n'
+        ),
+        PastPaper(
+            subject='Previous Year Questions',
+            course='Electronics Engineering',
+            semester='1st & 2nd',
+            year=2024,
+            exam_type='Previous Year Papers',
+            file_path='https://1drv.ms/b/c/ADA7036725D1B12A/EV9yikp-acVLnPsad7bqUK0BvAhWTwXnxF19bBNV4mxc4Q?e=lQdXUf'
+        )
+    ]
+    db.session.add_all(past_papers)
     
     # Add essential sample data for other modules
     # Sample Aarti Schedule
