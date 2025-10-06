@@ -31,7 +31,6 @@
                                     <th>Author</th>
                                     <th>Subject</th>
                                     <th>ISBN</th>
-                                    <th>Availability</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -51,15 +50,6 @@
                                         {% else %}
                                         <span class="text-muted">N/A</span>
                                         {% endif %}
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="me-2">{{ book.available_copies }}/{{ book.total_copies }}</span>
-                                            <div class="progress flex-grow-1" style="height: 6px;">
-                                                {% set percentage = (book.available_copies / book.total_copies * 100) if book.total_copies > 0 else 0 %}
-                                                <div class="progress-bar bg-success" style="width: '{{ percentage }}%';"></div>
-                                            </div>
-                                        </div>
                                     </td>
                                     <td>
                                         {% if book.available_copies > 0 %}

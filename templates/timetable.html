@@ -7,103 +7,161 @@
     <div class="row">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1><i class="fas fa-table me-2"></i>Time Table</h1>
-                <div class="d-flex gap-2">
-                    <select class="form-select" id="courseFilter">
-                        <option value="">All Courses</option>
-                        {% for course in courses %}
-                        <option value="{{ course[0] }}">{{ course[0] }}</option>
-                        {% endfor %}
-                    </select>
-                    <select class="form-select" id="semesterFilter">
-                        <option value="">All Semesters</option>
-                        {% for semester in semesters %}
-                        <option value="{{ semester[0] }}">{{ semester[0] }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+                <h1><i class="fas fa-calendar-alt me-2"></i>Academic Calendar</h1>
             </div>
         </div>
     </div>
 
-    {% if timetables %}
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-12">
-            <div class="card">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-calendar-check me-2"></i>Academic Calendar - ODD Semester 2025-26</h3>
+                    <p class="mb-0 mt-2"><small>UG Program: III & V Sem B.Tech (All Branches) | PG Program: III Sem M.Tech (All Branches), MCA</small></p>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="timetableTable">
-                            <thead class="table-dark">
+                        <table class="table table-hover">
+                            <thead class="table-light">
                                 <tr>
-                                    <th>Course</th>
-                                    <th>Semester</th>
-                                    <th>Subject</th>
-                                    <th>Day</th>
-                                    <th>Time Slot</th>
-                                    <th>Faculty</th>
-                                    <th>Room</th>
+                                    <th width="70%">Activity</th>
+                                    <th width="30%">Dates</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for timetable in timetables %}
                                 <tr>
-                                    <td><span class="badge bg-primary">{{ timetable.course }}</span></td>
-                                    <td><span class="badge bg-secondary">{{ timetable.semester }}</span></td>
-                                    <td class="fw-semibold">{{ timetable.subject }}</td>
-                                    <td>{{ timetable.day }}</td>
-                                    <td><i class="fas fa-clock me-1"></i>{{ timetable.time_slot }}</td>
-                                    <td><i class="fas fa-user me-1"></i>{{ timetable.faculty }}</td>
-                                    <td><i class="fas fa-door-open me-1"></i>{{ timetable.room }}</td>
+                                    <td><i class="fas fa-user-check text-primary me-2"></i>Reporting and Course registrations with Fees</td>
+                                    <td><span class="badge bg-info">23-30 June 2025</span></td>
                                 </tr>
-                                {% endfor %}
+                                <tr>
+                                    <td><i class="fas fa-play-circle text-success me-2"></i>Commencement of Classes</td>
+                                    <td><span class="badge bg-success">01 July 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-exclamation-triangle text-warning me-2"></i>Display of list of students having &lt;75% attendance (01.07.2025 to 31.07.2025)</td>
+                                    <td><span class="badge bg-warning">01 August 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-users text-info me-2"></i>Students with low attendance/poor performance to meet HoD along with parents</td>
+                                    <td><span class="badge bg-info">02 August 2025</span></td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <td><i class="fas fa-file-alt text-danger me-2"></i><strong>Mid Semester Examination (MSE)-I</strong></td>
+                                    <td><span class="badge bg-danger">18-23 August 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-comment-dots text-secondary me-2"></i>In Semester Feedback</td>
+                                    <td><span class="badge bg-secondary">18-23 August 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-book-open text-primary me-2"></i>Showing answer books to students and discussion (MSE-I)</td>
+                                    <td><span class="badge bg-info">28-30 August 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-check-circle text-success me-2"></i>Last Date for submission of MSE–I Marks to CoE</td>
+                                    <td><span class="badge bg-success">30 August 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-chart-line text-primary me-2"></i>Display of Result MSE–I</td>
+                                    <td><span class="badge bg-primary">30 August 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-exclamation-triangle text-warning me-2"></i>Display of list of students having &lt;75% attendance (01.07.2025 to 30.08.2025)</td>
+                                    <td><span class="badge bg-warning">01 September 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-users text-info me-2"></i>Students with low attendance/poor performance to meet HoD along with parents</td>
+                                    <td><span class="badge bg-info">02 September 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-handshake text-success me-2"></i>Parent Teacher Meeting</td>
+                                    <td><span class="badge bg-success">27 September 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-edit text-primary me-2"></i>Registration for End Semester Examination (ODD Semester)</td>
+                                    <td><span class="badge bg-primary">29 Sep. to 04 Oct. 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-stop-circle text-danger me-2"></i>End of Teaching for all Classes (Attendance computed till this date)</td>
+                                    <td><span class="badge bg-danger">04 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-list-alt text-warning me-2"></i>Submission of provisional detention list to Principal Office</td>
+                                    <td><span class="badge bg-warning">04 October 2025</span></td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <td><i class="fas fa-file-alt text-danger me-2"></i><strong>Mid Semester Examination (MSE)-II</strong></td>
+                                    <td><span class="badge bg-danger">06-11 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-comment-dots text-secondary me-2"></i>End Semester Feedback from students</td>
+                                    <td><span class="badge bg-secondary">06-11 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-book-open text-primary me-2"></i>Showing answer books MSE-II to students and discussion</td>
+                                    <td><span class="badge bg-info">13-15 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-file-upload text-warning me-2"></i>Last date for Term Work Submission</td>
+                                    <td><span class="badge bg-warning">15 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-check-circle text-success me-2"></i>Last Date for submission of MSE–II Marks to CoE</td>
+                                    <td><span class="badge bg-success">15 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-chart-line text-primary me-2"></i>Display of Result MSE–II</td>
+                                    <td><span class="badge bg-primary">15 October 2025</span></td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <td><i class="fas fa-umbrella-beach text-success me-2"></i><strong>Diwali Vacation</strong></td>
+                                    <td><span class="badge bg-success">16-25 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-list-alt text-danger me-2"></i>Submission & Display of Final Detention List / Forward to CoE</td>
+                                    <td><span class="badge bg-danger">27 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-ticket-alt text-info me-2"></i>Distribution of Exam Admission Card (Hall Tickets) to students</td>
+                                    <td><span class="badge bg-info">27-30 October 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-clipboard-check text-primary me-2"></i>Submission of Continuous Assessment Marks for Theory & Practical</td>
+                                    <td><span class="badge bg-primary">30 October 2025</span></td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td><i class="fas fa-graduation-cap text-white me-2"></i><strong>End Semester Examination (ESE) including Practical courses</strong></td>
+                                    <td><span class="badge bg-dark">01-22 November 2025</span></td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td><i class="fas fa-award text-success me-2"></i><strong>Declaration of Provisional Result</strong></td>
+                                    <td><span class="badge bg-success">15 December 2025</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-redo text-warning me-2"></i>Submission of grievances/appeals by students (within 05 days from result)</td>
+                                    <td><span class="badge bg-warning">TBD</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-search text-info me-2"></i>Addressing & Resolving (Re-Valuation) students' grievances (within 10 days)</td>
+                                    <td><span class="badge bg-info">TBD</span></td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td><i class="fas fa-flag-checkered text-primary me-2"></i><strong>Declaration of Final Results</strong></td>
+                                    <td><span class="badge bg-primary">31 December 2025</span></td>
+                                </tr>
+                                <tr class="table-info">
+                                    <td><i class="fas fa-play text-success me-2"></i><strong>Commencement of New semester classes</strong></td>
+                                    <td><span class="badge bg-success">08 December 2025</span></td>
+                                </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-info-circle me-2"></i><strong>Note:</strong> Above mentioned dates are subject to change due to unavoidable circumstances.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {% else %}
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body text-center py-5">
-                    <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
-                    <h3>No Timetable Data Available</h3>
-                    <p class="text-muted">Timetable information will be displayed here once available.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endif %}
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const courseFilter = document.getElementById('courseFilter');
-    const semesterFilter = document.getElementById('semesterFilter');
-    const table = document.getElementById('timetableTable');
-    
-    function filterTable() {
-        const courseValue = courseFilter.value;
-        const semesterValue = semesterFilter.value;
-        const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-        
-        for (let i = 0; i < rows.length; i++) {
-            const course = rows[i].cells[0].textContent.trim();
-            const semester = rows[i].cells[1].textContent.trim();
-            
-            const courseMatch = !courseValue || course.includes(courseValue);
-            const semesterMatch = !semesterValue || semester.includes(semesterValue);
-            
-            rows[i].style.display = courseMatch && semesterMatch ? '' : 'none';
-        }
-    }
-    
-    courseFilter.addEventListener('change', filterTable);
-    semesterFilter.addEventListener('change', filterTable);
-});
-</script>
 {% endblock %}
