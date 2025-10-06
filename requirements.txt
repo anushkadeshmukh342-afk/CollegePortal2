@@ -135,3 +135,7 @@ gunicorn
 psycopg2-binary
 pytz
 Werkzeug
+Flask
+Flask-SQLAlchemy
+gunicorn
+psycopg2-binary

@@ -142,10 +142,9 @@ def companies():
     today = date.today()
     return render_template('companies.html', companies=company_list, today=today)
 
-@app.route('/innovation_hub')
-def innovation_hub():
-    # Redirect to clubs for now, can be customized later
-    return redirect(url_for('clubs'))
+@app.route('/future_scope')
+def future_scope():
+    return render_template('future_scope.html')
 
 @app.route('/search')
 def search():
